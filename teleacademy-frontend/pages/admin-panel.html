@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Teleacademy - Panel Administrador</title>
+    <link rel="stylesheet" href="../css/styles.css">
+</head>
+<body>
+    <!-- NAVBAR -->
+    <nav class="navbar">
+        <div class="navbar-brand">🎓 Teleacademy - Admin</div>
+        <ul class="navbar-menu">
+            <li><span id="adminName">Admin</span></li>
+            <li><span class="navbar-logout" onclick="logout()">Cerrar Sesión</span></li>
+        </ul>
+    </nav>
+
+    <div class="dashboard-container">
+        <!-- SIDEBAR -->
+        <aside class="sidebar">
+            <ul class="sidebar-menu">
+                <li><a href="#" onclick="showSection('quienes-somos')" class="sidebar-link active">📄 Quiénes Somos</a></li>
+                <li><a href="#" onclick="showSection('profesores')" class="sidebar-link">👨‍🏫 Profesores</a></li>
+                <li><a href="#" onclick="showSection('cursos')" class="sidebar-link">📚 Cursos</a></li>
+                <li><a href="#" onclick="showSection('simulacros')" class="sidebar-link">📋 Simulacros</a></li>
+                <li><a href="#" onclick="showSection('contacto')" class="sidebar-link">📞 Contacto</a></li>
+            </ul>
+        </aside>
+
+        <!-- MAIN CONTENT -->
+        <div class="main-content">
+            <!-- QUIÉNES SOMOS -->
+            <div id="quienes-somos" class="section active">
+                <h2>Administrar - Quiénes Somos</h2>
+                <form class="form-admin" id="quienesSomosForm">
+                    <div class="form-group">
+                        <label>Texto (Descripción)</label>
+                        <textarea id="quienesSomosText" placeholder="Escribe aquí la descripción de la academia..." required></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label>Link de Imagen</label>
+                        <input type="url" id="quienesSomosImage" placeholder="https://ejemplo.com/imagen.jpg" required>
+                    </div>
+                    <button type="submit" class="btn-primary">Guardar Cambios</button>
+                </form>
+            </div>
+
+            <!-- PROFESORES -->
+            <div id="profesores" class="section">
+                <h2>Administrar Profesores</h2>
+
+                <form class="form-admin" id="addProfesorForm">
+                    <h3>Agregar Nuevo Profesor</h3>
+                    <div class="form-group">
+                        <label>Nombre Completo</label>
+                        <input type="text" id="nombreProfesor" placeholder="Juan Pérez" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Materia</label>
+                        <select id="materiaProfesor" required>
+                            <option value="">-- Seleccionar materia --</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Descripción</label>
+                        <textarea id="descripcionProfesor" placeholder="Breve descripción del profesor..." required></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label>Link de Foto</label>
+                        <input type="url" id="fotoProfesor" placeholder="https://ejemplo.com/foto.jpg" required>
+                    </div>
+                    <button type="submit" class="btn-primary">Agregar Profesor</button>
+                </form>
+
+                <hr style="margin: 30px 0; border: none; border-top: 2px solid #e0e0e0;">
+
+                <h3>Lista de Profesores</h3>
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Foto</th>
+                            <th>Nombre</th>
+                            <th>Materia</th>
+                            <th>Descripción</th>
+                            <th>Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody id="profesorTableBody">
+                        <tr>
+                            <td colspan="5" style="text-align: center;">Cargando profesores...</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- CURSOS -->
+            <div id="cursos" class="section">
+                <h2>Administrar Cursos</h2>
+
+                <form class="form-admin" id="addCursoForm">
+                    <h3>Agregar Nuevo Curso</h3>
+                    <div class="form-group">
+                        <label>Nombre del Curso</label>
+                        <input type="text" id="nombreCurso" placeholder="Matemática Avanzada" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Materia</label>
+                        <input type="text" id="materiaCurso" placeholder="Matemática" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Link de Imagen</label>
+                        <input type="url" id="imagenCurso" placeholder="https://ejemplo.com/imagen.jpg" required>
+                    </div>
+                    <button type="submit" class="btn-primary">Agregar Curso</button>
+                </form>
+
+                <hr style="margin: 30px 0; border: none; border-top: 2px solid #e0e0e0;">
+
+                <h3>Lista de Cursos</h3>
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Imagen</th>
+                            <th>Nombre</th>
+                            <th>Materia</th>
+                            <th>Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody id="cursoTableBody">
+                        <tr>
+                            <td colspan="4" style="text-align: center;">Cargando cursos...</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- SIMULACROS -->
+            <div id="simulacros" class="section">
+                <h2>Administrar Simulacros</h2>
+
+                <form class="form-admin" id="addSimulacroForm">
+                    <h3>Agregar Nuevo Simulacro</h3>
+                    <div class="form-group">
+                        <label>Nombre del Simulacro</label>
+                        <input type="text" id="nombreSimulacro" placeholder="Simulacro Enero 2026" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Link del Formulario (Google Forms)</label>
+                        <input type="url" id="linkFormulario" placeholder="https://forms.gle/..." required>
+                    </div>
+                    <div class="form-group">
+                        <label>Link de Imagen</label>
+                        <input type="url" id="imagenSimulacro" placeholder="https://ejemplo.com/imagen.jpg" required>
+                    </div>
+                    <button type="submit" class="btn-primary">Agregar Simulacro</button>
+                </form>
+
+                <hr style="margin: 30px 0; border: none; border-top: 2px solid #e0e0e0;">
+
+                <h3>Lista de Simulacros</h3>
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Imagen</th>
+                            <th>Nombre</th>
+                            <th>Link Formulario</th>
+                            <th>Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody id="simulacroTableBody">
+                        <tr>
+                            <td colspan="4" style="text-align: center;">Cargando simulacros...</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- CONTACTO -->
+            <div id="contacto" class="section">
+                <h2>Administrar - Contacto</h2>
+                <form class="form-admin" id="contactoForm">
+                    <div class="form-group">
+                        <label>Texto (Información de Contacto)</label>
+                        <textarea id="contactoText" placeholder="Escribe aquí la información de contacto..." required></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label>Link de Imagen</label>
+                        <input type="url" id="contactoImage" placeholder="https://ejemplo.com/imagen.jpg" required>
+                    </div>
+                    <button type="submit" class="btn-primary">Guardar Cambios</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script src="../js/app.js"></script>
+    <script src="../js/admin.js"></script>
+</body>
+</html>

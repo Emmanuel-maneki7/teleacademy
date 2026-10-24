@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Teleacademy - Login</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <div class="container-login">
+        <div class="login-box">
+            <h1 class="logo">🎓 Teleacademy</h1>
+            <p class="subtitle">Academia Preuniversitaria</p>
+
+            <div class="login-tabs">
+                <button class="tab-btn active" data-tab="student">Estudiante</button>
+                <button class="tab-btn" data-tab="admin">Administrador</button>
+            </div>
+
+            <!-- STUDENT LOGIN -->
+            <div id="student" class="tab-content active">
+                <form id="studentLoginForm">
+                    <div class="form-group">
+                        <label>Email</label>
+                        <input type="email" id="studentEmail" placeholder="tu@email.com" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Contraseña</label>
+                        <input type="password" id="studentPassword" placeholder="••••••••" required>
+                    </div>
+                    <button type="submit" class="btn-primary">Ingresar</button>
+                    <p class="footer-text">¿No tienes cuenta? <a href="pages/registro.html">Regístrate aquí</a></p>
+                </form>
+            </div>
+
+            <!-- ADMIN LOGIN -->
+            <div id="admin" class="tab-content">
+                <form id="adminLoginForm">
+                    <div class="form-group">
+                        <label>Email Admin</label>
+                        <input type="email" id="adminEmail" placeholder="admin@teleacademy.com" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Contraseña</label>
+                        <input type="password" id="adminPassword" placeholder="••••••••" required>
+                    </div>
+                    <button type="submit" class="btn-primary">Ingresar como Admin</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/app.js"></script>
+</body>
+</html>
